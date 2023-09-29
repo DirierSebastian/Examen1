@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
@@ -34,33 +35,30 @@ namespace Examen1
         }
         public string Numeros2(int inicio, int final)
         {
-            while (final <= inicio)
+            if (inicio == final)
+            {
+                return "El numero es igual";
+            }
+            while (final >= inicio)
             {
                 Console.WriteLine("La secuencia de los números es " + inicio);
                 if (inicio == final)
                 {
-                    return "Los números son iguales";
+                    return "";
                 }
-                return Numeros(--inicio, final);
+                ++inicio;
             }
             while(final <= inicio)
             {
                 Console.WriteLine("La secuencia de los números es " + inicio);
                 if (inicio == final)
                 {
-                    return "Los números son iguales";
+                    return "";
                 }
-                return Numeros(++inicio, final);
+                --inicio;
 
             }
-            if (inicio == final)
-            {
-                return "El numero es igual";
-            }
-            else
-            {
-                return Numeros2(inicio, final);
-            }
+            return "";
 
         }
         public string Tablas(int inicio, int final, int tabla)
